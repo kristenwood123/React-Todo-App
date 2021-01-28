@@ -15,16 +15,22 @@ function App() {
   ])
 
   //adding todo items by setting a new State
-  const addTodo = (text) => {
+  const addTodo = text => {
     const newTodos = [...todos, { text }];
     setTodos(newTodos);
   }
 
-  const completeTodo = (index) => {
+  const completeTodo = index => {
     const newTodos = [...todos]
     newTodos[index].isCompleted = true;
     setTodos(newTodos)
   } 
+
+  const removeTodo = index => {
+    const newTodos = [...todos]
+    newTodos.slice(index, 1)
+    setTodos(newTodos)
+  }
 
     return (
       <div className='app'>
@@ -37,6 +43,7 @@ function App() {
           index={index}
           todo={todo}
           completeTodo={completeTodo}
+          removeTodo={removeTodo}
         />
         ))}   
         </div>
